@@ -32,7 +32,7 @@ filetype plugin indent on
 syntax enable
 
 
-
+let NERDTreeShowHidden=1
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap <silent>lf :LspDocumentFormat<CR>
 
@@ -46,12 +46,22 @@ set expandtab
 colorscheme pablo 
 
 function! RunPhpUnit()
-        let status = term_getstatus( &shell ) 
-        if empty( status )  
-                bo terminal ++close ++rows=4
-        endif
+        call OpenTerm()
         call term_sendkeys(&shell, "phpunit.sh\<CR>")
 endfunction
-nnoremap <silent><C-t> :call RunPhpUnit()<CR>
+
+function! RunDusk()
+        call OpenTerm()
+        call term_sendkeys(&shell, "dusk.sh\<CR>")
+endfunction
+
+function! OpenTerm()
+        let status = term_getstatus( &shell ) 
+        if empty( status )  
+                bo terminal ++close ++rows=8 
+        endif            
+endfunction
 
 
+nnoremap <silent><C-t>t :call RunPhpUnit()<CR>
+nnoremap <silent><C-t>d :call RunDusk()<CR>
