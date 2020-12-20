@@ -6,7 +6,6 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
         call dein#begin('~/.cache/dein')
-
         call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
         call dein#add('Shougo/deoplete.nvim')
         if !has('nvim')
@@ -62,6 +61,6 @@ function! OpenTerm()
         endif            
 endfunction
 
-
+set backspace=2
 nnoremap <silent><C-t>t :call RunPhpUnit()<CR>
 nnoremap <silent><C-t>d :call RunDusk()<CR>
